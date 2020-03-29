@@ -31,11 +31,10 @@ def test_health(client):
 def test_auth(client):
     body = {'email': EMAIL,
             'password': PASSWORD}
-    response = client.post('/auth',
+    response = client.post('/auth', 
                            data=json.dumps(body),
                            content_type='application/json')
 
     assert response.status_code == 200
-    assert False
     token = response.json['token']
     assert token is not None
